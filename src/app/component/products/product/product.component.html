@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-body mt-5">
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+      <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectedProduct.$key">
+      <div class="form-group">
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="productService.selectedProduct.name"
+          class="form-control" placeholder="Add a product name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="category" #category="ngModel" [(ngModel)]="productService.selectedProduct.category"
+          class="form-control" placeholder="Add a product category">
+      </div>
+      <div class="form-group">
+        <input type="text" name="location" #location="ngModel" [(ngModel)]="productService.selectedProduct.location"
+          class="form-control" placeholder="Add a product location">
+      </div>
+      <div class="form-group">
+        <input type="number" name="price" #price="ngModel" [(ngModel)]="productService.selectedProduct.price"
+          class="form-control" placeholder="Add a product price">
+      </div>
+      <div class="form-group">
+        <button *ngIf="!productService.selectedProduct.$key" class="btn btn-primary" type="submit">
+          <i class="fas fa-plus-circle"></i> Add product
+        </button>
+        <button *ngIf="productService.selectedProduct.$key" class="btn btn-primary" type="submit">
+          <i class="fas fa-plus-circle"></i> Update product
+        </button>
+        <button class="btn btn-secondary" type="reset" (click)="resetForm(productForm)">
+          <i class="fas fa-sync-alt"></i> Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
